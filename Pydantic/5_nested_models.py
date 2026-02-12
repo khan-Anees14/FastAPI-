@@ -13,11 +13,11 @@ class Patient(BaseModel):
     age: int
     address: Address       # nested models/class
 
-address_dict = {'city': 'gurgaon', 'state': 'haryana', 'pin': '122001'}
+address_dict = {'city': 'lucknow', 'state': 'uttar pradesh', 'pin': '226024'}
 
 address1  = Address(**address_dict)
 
-Patient_dict = {'name': 'nitish', 'gender': 'male', 'age': 35, 'address': address1}
+Patient_dict = {'name': 'anish', 'gender': 'male', 'age': 35, 'address': address1}
 
 Patient1 = Patient(**Patient_dict)
 
@@ -34,5 +34,6 @@ print(Patient1.address.pin)
 # 2. Reusability: Use Vitals in multiple models (e.g. Patient, MedicalRecord)
 
 # 3. Readability: Easier for developers and API consumers to understand
+
 
 # 4. Validation: Nested models are validated automatically no extra work needed
