@@ -10,13 +10,10 @@ import numpy as np
 df = pd.read_csv('insurance.csv')
 df.sample(5)
 
-df['occupation'].unique()
-
 df_feat = df.copy()
 
 # feature -1 BMI
 df_feat['bmi'] = df_feat['weight'] / (df_feat['height'] ** 2)
-df_feat.sample()
 
 # Feature -2 Age group
 def age_group(age):
@@ -28,7 +25,6 @@ def age_group(age):
         return 'middle_age'
     return 'senior'
 df_feat['age_group'] = df_feat['age'].apply(age_group)
-df_feat.sample(5)
 
 # feature -3 Lifestyle Risk
 def lifstyle_risk(row):
@@ -40,7 +36,6 @@ def lifstyle_risk(row):
         return 'low'
     
 df_feat['lifestyle_risk'] = df_feat.apply(lifstyle_risk, axis=1)
-df_feat.sample(5)
 
 # Feature - 4 City tier
 tier_1_cities = ["Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata", "Hyderabad", "Pune"]
@@ -61,7 +56,6 @@ def city_tier(city):
     else:
          return 3
 df_feat['city_tier'] = df_feat['city'].apply(city_tier)
-df_feat.sample(5)
 
 df_feat.drop(columns=['age', 'weight', 'height', 'smoker', 'city'])[['income_lpa', 'occupation', 'bmi', 'age_group', 'lifestyle_risk', 'city_tier', 'insurance_premium_category']].sample(5)
 
