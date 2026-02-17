@@ -28,9 +28,7 @@ if st.button('Prediction Premium Category'):
         "smoker": smoker,
         "city": city,
         "occupation": occupation
-
     }
-
     
     try:
         response = requests.post(API_URL, json=input_data)
@@ -39,8 +37,8 @@ if st.button('Prediction Premium Category'):
         if response.status_code == 200 and "response" in result:
             prediction = result["response"]
             st.success(f"Predicted Insurance Premium Category: **{prediction['predicted_category']}**")
-            st.write("🔍 Confidence:", prediction["confidence"])
-            st.write("📊 Class Probabilities:")
+            st.write("Confidence:", prediction["confidence"])
+            st.write("Class Probabilities:")
             st.json(prediction["class_probabilities"])
 
         else:
@@ -48,7 +46,8 @@ if st.button('Prediction Premium Category'):
             st.write(result)
 
     except requests.exceptions.ConnectionError:
-        st.error("❌ Could not connect to the FastAPI server. Make sure it's running.")
+        st.error("Could not connect to the FastAPI server. Make sure it's running.")
+
 
 
         
